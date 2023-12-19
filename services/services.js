@@ -26,3 +26,19 @@ exports.fetchData = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.dataWithCredentials = async (req, res) => {
+  try {
+    let { email, password } = req.body;
+    let data = await User.find(
+      { email, password },
+      { userName: 1, email: 1, userCode: 1 }
+    );
+    res.status(200).json({
+      data,
+    });
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
