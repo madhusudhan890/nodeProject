@@ -4,12 +4,12 @@ const route = Router();
 
 route.post("/signup", Service.signUp);
 route.get(
-  "/",
+  "/data",
   Service.fetchData // fetching data without using cache / index values
 );
 
-route.post("/data", Service.dataWithCredentials);
+route.get("/login-data", Service.dataWithCredentials);
 
-// route.get("/data", Service.dataWithCache);
+route.get("/cache-data", Service.dataWithCache);
 
 module.exports = route;
